@@ -15,6 +15,6 @@ module.exports = {
     sourceType: "module"
   },
   rules: {
-    "prettier/prettier": "error"
+    "prettier/prettier": "warn"
   }
 };
