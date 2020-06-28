@@ -6,7 +6,7 @@ import Films from "./films/Films";
 import FilmDetail from "./film-detail/FilmDetail";
 
 function App() {
-  axios.defaults.baseURL = "https://swapi.co/api/";
+  axios.defaults.baseURL = "https://swapi.dev/api/";
   return (
     <Router>
       <Route path="/" exact component={Films} />
