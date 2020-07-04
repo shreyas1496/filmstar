@@ -5,23 +5,23 @@ import { Spinner } from "react-bootstrap";
 class Fetcher extends React.Component {
   state = {
     isFetching: false,
-    data: null
+    data: null,
   };
 
   _fetchData = () => {
     this.setState({
-      isFetching: true
+      isFetching: true,
     });
-    return Axios.get(this.props.url)
-      .then(res => {
+    return Axios.get(this.props.url.replace("http://", "https://"))
+      .then((res) => {
         this.setState({
           isFetching: false,
-          data: res.data
+          data: res.data,
         });
       })
       .catch(() => {
         this.setState({
-          isFetching: false
+          isFetching: false,
         });
       });
   };
@@ -34,7 +34,7 @@ class Fetcher extends React.Component {
     const { attributes } = this.props;
     const { isFetching, data } = this.state;
     return (
-      <div style={{padding: '5px'}}>
+      <div style={{ padding: "5px" }}>
         {isFetching ? (
           <Spinner style={{ margin: "10px" }} animation="grow" />
         ) : (
@@ -42,9 +42,11 @@ class Fetcher extends React.Component {
             <div>
               <h5>{data.name}</h5>
               <ul>
-                {
-                  attributes.map(attribute => <li key={attribute}>{attribute} : {data[attribute]}</li>)
-                }
+                {attributes.map((attribute) => (
+                  <li key={attribute}>
+                    {attribute} : {data[attribute]}
+                  </li>
+                ))}
               </ul>
             </div>
           )
